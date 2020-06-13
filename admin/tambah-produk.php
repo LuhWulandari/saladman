@@ -15,6 +15,10 @@
 			<input type="number" class="form-control" name="harga">
 		</div>
 		<div class="form-group">
+			<label>Stok</label>
+			<input type="number" class="form-control" name="stok">
+		</div>
+		<div class="form-group">
 			<label>Berat (gr)</label>
 			<input type="number" class="form-control" name="berat">
 		</div>
@@ -35,9 +39,10 @@
 			$lokasi = $_FILES['foto']['tmp_name'];
 			move_uploaded_file($lokasi, "../foto_produk/".$nama);
 			//Query menyimpan data pada form input ke tabel "produk" dalam database 
-			$koneksi->query("INSERT INTO produk (nama_produk, harga_produk, berat_produk, foto_produk, deskripsi_produk)
+			$koneksi->query("INSERT INTO produk (nama_produk, harga_produk, stok_produk, berat_produk, foto_produk, deskripsi_produk)
 		                     VALUES ('$_POST[nama]',
 		                             '$_POST[harga]',
+		                             '$_POST[stok]',
 		                             '$_POST[berat]',
 		                             '$nama',
 		                             '$_POST[deskripsi]')");

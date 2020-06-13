@@ -11,6 +11,7 @@
 				<th>No</th>
 				<th>Nama</th>
 				<th>Harga</th>
+				<th>Stok</th>
 				<th>Berat (gr)</th>
 				<th>Foto</th>
 				<th>Deskripsi</th>
@@ -30,6 +31,7 @@
 				<td><?php echo $nomor; ?></td>
 				<td><?php echo $data['nama_produk']; ?></td>
 				<td>Rp. <?php echo number_format($data['harga_produk']); ?> ,-</td>
+				<td><?php echo $data['stok_produk']; ?></td>
 				<td><?php echo $data['berat_produk']; ?></td>
 				<td>
 					<img src="../foto_produk/<?php echo $data['foto_produk']; ?>" width="100px">

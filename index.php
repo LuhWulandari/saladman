@@ -23,7 +23,7 @@
 						<img src="foto_produk/<?php echo $data['foto_produk']; ?>" width="100px">
 						<div class="caption">
 							<h3><?php echo $data['nama_produk']; ?></h3>
-							<h5><?php echo number_format($data['harga_produk']); ?></h5>
+							<h5>Rp. <?php echo number_format($data['harga_produk']); ?> ,-</h5>
 							<a href="beli.php?id=<?php echo $data['id_produk']; ?>" 
 							class="btn btn-primary">Beli</a>
 							<a href="detail.php?id=<?php echo $data ['id_produk']; ?>" 

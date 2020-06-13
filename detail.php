@@ -2,7 +2,7 @@
     session_start();
     include 'koneksi.php';
 
-    if(!isset($_SESSION['pelanggan'])){
+    if(!isset($_SESSION['pelanggan']) OR empty($_SESSION['pelanggan'])){
         echo "<script>alert('Anda harus login!');</script>";
         echo "<script>location='login.php';</script>";
     }
@@ -44,11 +44,12 @@
             </div>
             <div class="col-md-6">
             <h2><?php echo $data["nama_produk"]?></h2>
-            <h4>Rp. <?php echo number_format($data["harga_produk"]); ?></h4>
+            <h4>Rp. <?php echo number_format($data["harga_produk"]); ?> ,-</h4>
+            <h5>Stok : <?php echo $data['stok_produk']?></h5>
             <form method="post">
                 <div class="form-group">
                     <div class="input-group">
-                       <input type="number" min="1" class="form-control" name="jumlah">
+                       <input type="number" min="1" class="form-control" name="jumlah" max="<?php echo $data['stok_produk'] ?>">
                         <div class="input-group-btn">
                             <button class="btn btn-primary" name="beli"> Beli </button>
                         </div>

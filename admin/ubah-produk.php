@@ -24,6 +24,10 @@
 			<input type="number" class="form-control" name="harga" value="<?php echo $data['harga_produk']; ?>">
 		</div>
 		<div class="form-group">
+			<label>Stok</label>
+			<input type="number" class="form-control" name="stok" value="<?php echo $data['stok_produk']; ?>">
+		</div>
+		<div class="form-group">
 			<label>Berat (Gr)</label>
 			<input type="number" class="form-control" name="berat" value="<?php echo $data['berat_produk']; ?>">
 		</div>
@@ -53,6 +57,7 @@
 				move_uploaded_file($lokasi, "../foto_produk/$nama");
 				$koneksi->query("UPDATE produk SET nama_produk      = '$_POST[nama]',
 					                               harga_produk     = '$_POST[harga]',
+					                               stok_produk      = '$_POST[stok]',
 					                               berat_produk     = '$_POST[berat]',
 					                               foto_produk      = '$nama',
 					                               deskripsi_produk = '$_POST[deskripsi]'
@@ -60,6 +65,7 @@
 			}else{
 				$koneksi->query("UPDATE produk SET nama_produk      = '$_POST[nama]',
 					                               harga_produk     = '$_POST[harga]',
+					                               stok_produk      = '$_POST[stok]',
 					                               berat_produk     = '$_POST[berat]',
 					                               deskripsi_produk = '$_POST[deskripsi]'
 					                               WHERE id_produk  = '$_GET[id]'");

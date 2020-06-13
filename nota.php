@@ -1,6 +1,11 @@
 <?php
 	session_start();
 	include 'koneksi.php';
+	if(!isset($_SESSION['pelanggan']) OR empty($_SESSION['pelanggan'])){
+        echo "<script>alert('Anda harus login!');</script>";
+        echo "<script>location='login.php';</script>";
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,11 +23,21 @@
 				$query = $koneksi->query("SELECT * FROM pembelian JOIN pelanggan 
 					                      ON pembelian.id_pelanggan = pelanggan.id_pelanggan
 					                      WHERE pembelian.id_pembelian = '$_GET[id]'");
-
 				$detail = $query->fetch_assoc();
+
+				//Jika pelanggan yang beli tidak sesuai dengan pelanggan yang login (tidak berhak melihat nota orang lain)
+				//Pelanggan yang beli harus sama dengan pelanggan yang login
+					//Id pelanggan yang beli
+				$user_beli  = $detail['id_pelanggan'];
+					//Id pelanggan yang login
+				$user_login = $_SESSION['pelanggan']['id_pelanggan'];
+
+				if($user_beli !== $user_login){
+					echo "<script>alert('Data tidak sesuai!')</script>";
+                	echo "<script>location='riwayat.php'</script>";
+                	exit();
+				}
 			?>
-			
-			
 			<div class ="row">
 					<div class="col-md-4">
 						<h3> Pembelian </h3>

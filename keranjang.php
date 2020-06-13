@@ -1,14 +1,6 @@
 <?php
 	session_start();
 	include 'koneksi.php';
-
-	// echo "<pre>";
-	// print_r($_SESSION['keranjang']);
-	// echo "</pre>";
-	if(!isset($_SESSION['pelanggan'])){
-        echo "<script>alert('Anda harus login!');</script>";
-        echo "<script>location='login.php';</script>";
-    }
 	
 	if(empty($_SESSION['keranjang']) OR !isset($_SESSION['keranjang'])){
 		echo "<script>alert('Keranjang kosong!');</script>";

@@ -48,7 +48,15 @@
 				$akun = $query->fetch_assoc(); 
 				$_SESSION['pelanggan'] = $akun;
 				echo "<script>alert('Anda berhasil login!');</script>";
-				echo "<script>location='index.php';</script>";
+
+				//Jika sudah belanja
+				if(isset($_SESSION['keranjang']) OR !empty($_SESSION['keranjang'])){
+					echo "<script>location='checkout.php';</script>";
+				}
+				//Jika belum belanja
+				else{
+					echo "<script>location='riwayat.php';</script>";
+				}
 			}
 			//Jika akun tidak ada yang cocok
 			else{

@@ -115,11 +115,11 @@
 					//Menghitung Ongkir
 					$query           = $koneksi->query("SELECT * FROM ongkir WHERE id_ongkir = '$id_ongkir'");
 					$ongkir          = $query->fetch_assoc();
-					$nama_kota		= $ongkir['nama_kota'];
+					$nama_kota		 = $ongkir['nama_kota'];
 						//Mengambil data field tarif dan menyimpannya di $tarif_ongkir
 					$tarif   = $ongkir['tarif'];
 						//Menghitung total belanja beserta ongkirnya dan disimpan di total_pembelian
-					$total_pembelian = $totalbelanja + $tarif_ongkir;
+					$total_pembelian = $totalbelanja + $tarif;
 
 					//Menyimpan data checkout ke tabel "pembelian"
 					$koneksi->query("INSERT INTO pembelian (id_pelanggan, 
@@ -137,11 +137,11 @@
 					foreach ($_SESSION['keranjang'] as $id_produk => $jumlah)
 					{
 						//mendapatkan data produk berdasarkan id_produk
-						$query = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
-						$data  = $query->fetch_assoc();
-						$nama = $data ['nama_produk'];
-						$harga = $data ['harga_produk'];
-						$berat  = $data ['berat_produk'];
+						$query    = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
+						$data     = $query->fetch_assoc();
+						$nama 	  = $data ['nama_produk'];
+						$harga 	  = $data ['harga_produk'];
+						$berat    = $data ['berat_produk'];
 
 						$subberat = $data ['berat_produk']*$jumlah;
 						$subharga = $data ['harga_produk']*$jumlah;
@@ -153,6 +153,9 @@
 							                                           '$id_produk', '$nama', '$harga', '$berat', 
 																	   '$subberat', '$subharga',
 							                                           '$jumlah')");
+						//Update stock produk
+						$koneksi->query("UPDATE produk SET stok_produk = stok_produk - $jumlah
+							                           WHERE id_produk = '$id_produk'");
 					}
 
 					//Mengosongkan keranjang belanja
