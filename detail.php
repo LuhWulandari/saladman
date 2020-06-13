@@ -1,10 +1,16 @@
-<?php session_start();?>
-<?php include 'koneksi.php';?>
-<?php
-$id_produk= $_GET["id"];
+<?php 
+    session_start();
+    include 'koneksi.php';
 
-$query = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
-$data  = $query->fetch_assoc();
+    if(!isset($_SESSION['pelanggan'])){
+        echo "<script>alert('Anda harus login!');</script>";
+        echo "<script>location='login.php';</script>";
+    }
+
+    $id_produk= $_GET["id"];
+
+    $query = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
+    $data  = $query->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html>

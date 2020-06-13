@@ -22,22 +22,7 @@
 </head>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container">
-			<ul class="nav navbar-nav">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="keranjang.php">Keranjang</a></li>
-				<!-- Jika sudah login -->
-				<?php if(isset($_SESSION['pelanggan'])) : ?>
-					<li><a href="logout.php">Logout</a></li>
-				<!-- Jika belum login -->
-				<?php else : ?>
-					<li><a href="login.php">Login</a></li>
-				<?php endif ?>
-				<li><a href="checkout.php">Checkout</a></li>
-			</ul>
-		</div>
-	</nav>
+	<?php include 'menu.php'; ?>
 	<section class="konten">
 		<div class="container">
 			<h1>Keranjang Belanja</h1>
@@ -81,25 +66,19 @@
 			</table>
 			<form method="POST">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label>Nama</label>
 							<input class="form-control" type="text" name="" readonly="" value="<?php echo $_SESSION['pelanggan']['nama_pelanggan']; ?>">
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label>Telepon</label>
 							<input class="form-control" type="text" name="" readonly="" value="<?php echo $_SESSION['pelanggan']['telepon_pelanggan']; ?>">
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label>Alamat</label>
-							<input class="form-control" type="text" name="" readonly="" value="<?php echo $_SESSION['pelanggan']['alamat_pelanggan']; ?>">
-						</div>
-					</div>
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label>Ongkir</label>
 							<select class="form-control" name="id_ongkir">

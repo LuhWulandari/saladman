@@ -5,6 +5,11 @@
 	// echo "<pre>";
 	// print_r($_SESSION['keranjang']);
 	// echo "</pre>";
+	if(!isset($_SESSION['pelanggan'])){
+        echo "<script>alert('Anda harus login!');</script>";
+        echo "<script>location='login.php';</script>";
+    }
+	
 	if(empty($_SESSION['keranjang']) OR !isset($_SESSION['keranjang'])){
 		echo "<script>alert('Keranjang kosong!');</script>";
 		echo "<script>location='index.php';</script>";
@@ -17,22 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.css">
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container">
-			<ul class="nav navbar-nav">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="keranjang.php">Keranjang</a></li>
-				<!-- Jika sudah login -->
-				<?php if(isset($_SESSION['pelanggan'])) : ?>
-					<li><a href="logout.php">Logout</a></li>
-				<!-- Jika belum login -->
-				<?php else : ?>
-					<li><a href="login.php">Login</a></li>
-				<?php endif ?>
-				<li><a href="checkout.php">Checkout</a></li>
-			</ul>
-		</div>
-	</nav>
+	<?php include 'menu.php'; ?>
 	<section class="konten">
 		<div class="container">
 			<h1>Keranjang Belanja</h1>

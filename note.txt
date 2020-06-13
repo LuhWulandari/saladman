@@ -5,3 +5,4 @@
 *REVISI*
 1. Rubah syntax update 'update-pelanggan.php' menjadi lebih simple
 2. <pre></pre> di home.php dihapus
+3. Bagian index.php ketika klik Beli, jumlahnya tidak bisa ditambah dengan beli di tombol Detail
