@@ -4,12 +4,8 @@
 
 *REVISI*
 1. Rubah syntax update 'update-pelanggan.php' menjadi lebih simple
-<<<<<<< HEAD
-2. <pre></pre> di home.php dihapus
-=======
-2. <pre></pre> di home.php dihapus2. <pre></pre> di home.php dihapus
-TEST
-AAN
->>>>>>> c5ba80fbd98231fb3e54fa2bedfe1e0cba1a8f05
 
-LOV U SAYANG
+2. <pre></pre> di home.php dihapus
+
+
+
