@@ -1,0 +1,7 @@
+*INFO*
+1. Tabel "pembelian_produk" pada DB merupakan tempat menyimpan data dari proses keranjang belanja
+2. Tabel "pembelian" pada DB merupakan tempat menyimpan data dari proses checkout
+
+*REVISI*
+1. Rubah syntax update 'update-pelanggan.php' menjadi lebih simple
+2. <pre></pre> di home.php dihapus
