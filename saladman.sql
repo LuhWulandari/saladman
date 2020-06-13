@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2020 at 05:31 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.1.31
+-- Generation Time: Jun 13, 2020 at 11:31 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -97,16 +97,29 @@ CREATE TABLE `pembelian` (
   `id_pelanggan` int(11) NOT NULL,
   `id_ongkir` int(11) NOT NULL,
   `tanggal_pembelian` date NOT NULL,
-  `total_pembelian` int(11) NOT NULL
+  `total_pembelian` int(11) NOT NULL,
+  `nama_kota` varchar(100) NOT NULL,
+  `tarif` int(11) NOT NULL,
+  `alamat_pengiriman` text NOT NULL,
+  `status_pembelian` varchar(100) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembelian`
 --
 
-INSERT INTO `pembelian` (`id_pembelian`, `id_pelanggan`, `id_ongkir`, `tanggal_pembelian`, `total_pembelian`) VALUES
-(9, 2, 1, '2020-06-13', 20000),
-(10, 2, 1, '2020-06-13', 16000);
+INSERT INTO `pembelian` (`id_pembelian`, `id_pelanggan`, `id_ongkir`, `tanggal_pembelian`, `total_pembelian`, `nama_kota`, `tarif`, `alamat_pengiriman`, `status_pembelian`) VALUES
+(9, 2, 1, '2020-06-13', 20000, '', 0, '', 'Pending'),
+(10, 2, 1, '2020-06-13', 16000, '', 0, '', 'Pending'),
+(11, 3, 2, '2020-06-13', 13000, '', 0, '', 'Pending'),
+(12, 3, 1, '2020-06-13', 12000, '', 0, '', 'Pending'),
+(13, 3, 1, '2020-06-13', 13000, '', 0, '', 'Pending'),
+(14, 3, 1, '2020-06-13', 11000, '', 0, '', 'Pending'),
+(15, 3, 1, '2020-06-13', 15000, '', 0, '', 'Pending'),
+(16, 3, 1, '2020-06-13', 2500, 'Kota Denpasar', 10000, '', 'Pending'),
+(17, 3, 1, '2020-06-13', 3500, 'Kota Denpasar', 10000, '', 'Pending'),
+(18, 3, 2, '2020-06-13', 1000, 'Denpasar Barat', 10000, '', 'Pending'),
+(19, 3, 0, '2020-06-13', 2500, '', 0, 'jl.badak', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -121,20 +134,34 @@ CREATE TABLE `pembelian_produk` (
   `jumlah` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `harga` int(11) NOT NULL,
-  `berat` int(11) NOT NULL
+  `berat` int(11) NOT NULL,
+  `subberat` int(11) NOT NULL,
+  `subharga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembelian_produk`
 --
 
-INSERT INTO `pembelian_produk` (`id_pembelian_produk`, `id_pembelian`, `id_produk`, `jumlah`, `nama`, `harga`, `berat`) VALUES
-(6, 9, 7, 3, '', 0, 0),
-(7, 9, 8, 2, '', 0, 0),
-(8, 9, 9, 1, '', 0, 0),
-(9, 10, 7, 1, '', 0, 0),
-(10, 10, 8, 1, '', 0, 0),
-(11, 10, 9, 1, '', 0, 0);
+INSERT INTO `pembelian_produk` (`id_pembelian_produk`, `id_pembelian`, `id_produk`, `jumlah`, `nama`, `harga`, `berat`, `subberat`, `subharga`) VALUES
+(6, 9, 7, 3, '', 0, 0, 0, 0),
+(7, 9, 8, 2, '', 0, 0, 0, 0),
+(8, 9, 9, 1, '', 0, 0, 0, 0),
+(9, 10, 7, 1, '', 0, 0, 0, 0),
+(10, 10, 8, 1, '', 0, 0, 0, 0),
+(11, 10, 9, 1, '', 0, 0, 0, 0),
+(12, 13, 7, 1, 'Apel', 1000, 100, 100, 1000),
+(13, 13, 8, 1, 'Tomat', 2000, 200, 200, 2000),
+(14, 14, 7, 1, 'Apel', 1000, 100, 100, 1000),
+(15, 15, 9, 1, 'Brokoli', 3000, 300, 300, 3000),
+(16, 15, 8, 1, 'Tomat', 2000, 200, 200, 2000),
+(17, 0, 7, 1, 'Apel', 1000, 100, 100, 1000),
+(18, 0, 8, 1, 'Tomat', 2500, 200, 200, 2500),
+(19, 16, 8, 1, 'Tomat', 2500, 200, 200, 2500),
+(20, 17, 8, 1, 'Tomat', 2500, 200, 200, 2500),
+(21, 17, 7, 1, 'Apel', 1000, 100, 100, 1000),
+(22, 18, 7, 1, 'Apel', 1000, 100, 100, 1000),
+(23, 19, 8, 1, 'Tomat', 2500, 200, 200, 2500);
 
 -- --------------------------------------------------------
 
@@ -157,7 +184,7 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `berat_produk`, `foto_produk`, `deskripsi_produk`) VALUES
 (7, 'Apel', 1000, 100, 'apple1.jpg', 'Apel Segar	'),
-(8, 'Tomat', 2000, 200, '7f703281cd786114dd4ca14cab56dcdb.jpg', 'Tomat Segar'),
+(8, 'Tomat', 2500, 200, '7f703281cd786114dd4ca14cab56dcdb.jpg', 'Tomat Segar'),
 (9, 'Brokoli', 3000, 300, 'brokoli.jpg', 'Brokoli Segar');
 
 --
@@ -226,13 +253,13 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `pembelian_produk`
 --
 ALTER TABLE `pembelian_produk`
-  MODIFY `id_pembelian_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_pembelian_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `produk`
