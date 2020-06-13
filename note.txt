@@ -6,3 +6,4 @@
 1. Rubah syntax update 'update-pelanggan.php' menjadi lebih simple
 2. <pre></pre> di home.php dihapus2. <pre></pre> di home.php dihapus
 TEST
+AAN
