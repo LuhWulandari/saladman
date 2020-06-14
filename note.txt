@@ -1,8 +1,10 @@
 *INFO*
 1. Tabel "pembelian_produk" pada DB merupakan tempat menyimpan data dari proses keranjang belanja
 2. Tabel "pembelian" pada DB merupakan tempat menyimpan data dari proses checkout
+3. Untuk mengganti "Status" pada pembelian, letaknya di pembayaran.php
 
 *REVISI*
 1. Rubah syntax update 'update-pelanggan.php' menjadi lebih simple
 2. <pre></pre> di home.php dihapus
 3. Bagian index.php ketika klik Beli, jumlahnya tidak bisa ditambah dengan beli di tombol Detail
+4. Pada pembayaran.php di Admin, tambahkan kurir pengiriman seperti JNE, TIKI, Dll

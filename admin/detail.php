@@ -13,21 +13,28 @@
 
 		$detail = $query->fetch_assoc();
 	?>
-	<!-- <pre>
-		<?php print_r($detail); ?>	
-	</pre> -->
-	<strong>
-		Nama : <?php echo $detail['nama_pelanggan']; ?>
-	</strong><br>
-	<p>
-		Telepon : <?php echo $detail['telepon_pelanggan']; ?> <br>
-		Email : <?php echo $detail['email_pelanggan']; ?> <br>
-		Alamat : <?php echo $detail['alamat_pelanggan']; ?>
-	</p>
-	<p>
-		Tanggal : <?php echo $detail['tanggal_pembelian']; ?> <br>
-		Total : <?php echo $detail['total_pembelian']; ?>
-	</p>
+	<div class="row">
+		<div class="col-md-4">
+			<h3>Pembelian</h3>
+			<strong> No. Pembelian <?php echo $detail['id_pembelian']; ?></strong><br>
+			Tanggal : <?php echo $detail['tanggal_pembelian']; ?> <br>
+			Total : Rp. <?php echo number_format($detail['total_pembelian']); ?> ,-<br>
+			Status : <?php echo $detail['status_pembelian']; ?>
+		</div>
+		<div class="col-md-4">
+			<h3> Pelanggan </h3>
+			<strong> Nama : <?php echo $detail['nama_pelanggan']; ?></strong><br>
+			Telepon : <?php echo $detail['telepon_pelanggan']; ?> <br>
+			Email : <?php echo $detail['email_pelanggan']; ?> <br>
+			Alamat : <?php echo $detail['alamat_pelanggan']; ?>
+		</div>
+		<div class="col-md-4">
+			<h3>Pengiriman</h3>
+			<strong> Nama Kota : <?php echo $detail['nama_kota']; ?></strong><br>
+			Ongkos Kirim : Rp. <?php echo number_format($detail['tarif']); ?> ,- <br>
+			Alamat Pengiriman: <?php echo $detail['alamat_pengiriman']; ?>
+		</div>
+	</div><br>
 
 	<table class="table table-bordered">
 		<thead>

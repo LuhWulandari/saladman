@@ -41,7 +41,13 @@
 						<td><?php echo $nomor; ?></td>
 						<td><?php echo $data['tanggal_pembelian']; ?></td>
 						<td>Rp. <?php echo number_format($data['total_pembelian']); ?> ,-</td>
-						<td><?php echo $data['status_pembelian']; ?></td>
+						<td>
+							<?php echo $data['status_pembelian']; ?>
+							<br>
+							<?php if(!empty($data['resi_pengiriman'])) : ?>
+							Resi : <?php echo $data['resi_pengiriman']; ?>
+							<?php endif ?>
+						</td>
 						<td>
 							<a href="nota.php?id=<?php echo $data['id_pembelian']; ?>" class="btn btn-info">Nota</a>
 							<a href="pembayaran.php?id=<?php echo $data['id_pembelian']; ?>" class="btn btn-success">Pembayaran</a>

@@ -12,7 +12,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>SALADMAN | ADMIN MENU</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -96,6 +96,9 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                         }
                         elseif($_GET['halaman']=='logout'){
                             include 'logout.php';
+                        }
+                        elseif($_GET['halaman']=='pembayaran'){
+                            include 'pembayaran.php';
                         }
                     }
                     else{

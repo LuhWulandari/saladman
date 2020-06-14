@@ -12,6 +12,7 @@
 				<th>Nama Pelanggan</th>
 				<th>Tanggal</th>
 				<th>Total</th>
+				<th>Status</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -24,14 +25,18 @@
 				$nomor = 1; 
 				//Menampilkan data
 				while($data = $query->fetch_assoc()){
-			?>
+			?> 
 			<tr>
 				<td><?php echo $nomor; ?></td>
 				<td><?php echo $data['nama_pelanggan']; ?></td>
 				<td><?php echo $data['tanggal_pembelian']; ?></td> 
 				<td>Rp. <?php echo number_format($data['total_pembelian']); ?> ,-</td>
+				<td><?php echo $data['status_pembelian']; ?></td>
 				<td>
 					<a href="index.php?halaman=detail&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-info">Detail</a>
+					<?php if($data['status_pembelian']=='Processing') : ?>
+					<a href="index.php?halaman=pembayaran&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-success">Cek</a>
+					<?php endif ?>
 				</td>
 			</tr>
 			<?php

@@ -40,13 +40,13 @@
 			?>
 			<div class ="row">
 					<div class="col-md-4">
-						<h3> Pembelian </h3>
+						<h3>Pembelian</h3>
 						<strong> No. Pembelian <?php echo $detail['id_pembelian']; ?></strong><br>
 						Tanggal : <?php echo $detail['tanggal_pembelian']; ?> <br>
 						Total : Rp. <?php echo number_format($detail['total_pembelian']); ?> ,-
 					</div>
 					<div class="col-md-4">
-						<h3> Pelanggan </h3>
+						<h3>Pelanggan</h3>
 						<strong> Nama : <?php echo $detail['nama_pelanggan']; ?></strong><br>
 						<p>
 							Telepon : <?php echo $detail['telepon_pelanggan']; ?> <br>
@@ -55,7 +55,7 @@
 						</p>
 					</div>
 					<div class="col-md-4">
-						<h3> Pengiriman </h3>
+						<h3>Pengiriman</h3>
 						<strong> Nama Kota : <?php echo $detail['nama_kota']; ?></strong><br>
 						Ongkos Kirim : Rp. <?php echo number_format($detail['tarif']); ?> ,- <br>
 						Alamat Pengiriman: <?php echo $detail['alamat_pengiriman']; ?>
@@ -89,7 +89,7 @@
 						<td><?php echo $data['berat']; ?> gr. </td>
 						<td><?php echo $data['jumlah']; ?></td>
 						<td><?php echo $data['subberat']; ?> gr. </td>
-						<td>Rp. <?php echo number_format($data['subharga']); ?></td>
+						<td>Rp. <?php echo number_format($data['subharga']); ?> ,-</td>
 					</tr>
 					<?php
 						$nomor++; 

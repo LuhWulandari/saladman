@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2020 at 08:41 PM
+-- Generation Time: Jun 14, 2020 at 03:52 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.1.31
 
@@ -108,7 +108,8 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_pembelian`, `nama`, `bank`, `jumlah`, `tanggal`, `bukti`) VALUES
-(2, 26, 'Awidya Andika', 'BNI', 16500, '2020-06-13', '20200613200143download.jpg');
+(2, 26, 'Awidya Andika', 'BNI', 16500, '2020-06-13', '20200613200143download.jpg'),
+(3, 27, 'Awidya Andika', 'BCA', 13000, '2020-06-14', '2020061403085160320989_568cf4ce-70ce-4905-b641-e8b5f6ed36c9_690_690.jpg');
 
 -- --------------------------------------------------------
 
@@ -125,6 +126,7 @@ CREATE TABLE `pembelian` (
   `nama_kota` varchar(100) NOT NULL,
   `tarif` int(11) NOT NULL,
   `alamat_pengiriman` text NOT NULL,
+  `resi_pengiriman` varchar(50) NOT NULL,
   `status_pembelian` varchar(100) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -132,12 +134,12 @@ CREATE TABLE `pembelian` (
 -- Dumping data for table `pembelian`
 --
 
-INSERT INTO `pembelian` (`id_pembelian`, `id_pelanggan`, `id_ongkir`, `tanggal_pembelian`, `total_pembelian`, `nama_kota`, `tarif`, `alamat_pengiriman`, `status_pembelian`) VALUES
-(26, 2, 1, '2020-06-13', 16500, 'Kota Denpasar', 10000, 'Jl. Buana Kubu, No. 65', 'Processing'),
-(27, 2, 2, '2020-06-13', 13000, 'Denpasar Barat', 10000, 'Jl Pasutri Gaje', 'Pending'),
-(28, 2, 1, '2020-06-13', 11000, 'Kota Denpasar', 10000, 'Jl. Gunung Agung 3', 'Pending'),
-(29, 2, 1, '2020-06-13', 23000, 'Kota Denpasar', 10000, 'Jl. Watu Renggong', 'Pending'),
-(30, 2, 2, '2020-06-13', 16500, 'Denpasar Barat', 10000, 'Jl. Subak Badra', 'Pending');
+INSERT INTO `pembelian` (`id_pembelian`, `id_pelanggan`, `id_ongkir`, `tanggal_pembelian`, `total_pembelian`, `nama_kota`, `tarif`, `alamat_pengiriman`, `resi_pengiriman`, `status_pembelian`) VALUES
+(26, 2, 1, '2020-06-13', 16500, 'Kota Denpasar', 10000, 'Jl. Buana Kubu, No. 65', 'ABC123', 'Barang dikirim'),
+(27, 2, 2, '2020-06-13', 13000, 'Denpasar Barat', 10000, 'Jl Pasutri Gaje', 'BCA132', 'Barang dikirim'),
+(28, 2, 1, '2020-06-13', 11000, 'Kota Denpasar', 10000, 'Jl. Gunung Agung 3', '', 'Pending'),
+(29, 2, 1, '2020-06-13', 23000, 'Kota Denpasar', 10000, 'Jl. Watu Renggong', '', 'Pending'),
+(30, 2, 2, '2020-06-13', 16500, 'Denpasar Barat', 10000, 'Jl. Subak Badra', '', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -272,7 +274,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
