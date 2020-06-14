@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2020 at 03:52 AM
+-- Generation Time: Jun 14, 2020 at 06:54 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.1.31
 
@@ -109,7 +109,8 @@ CREATE TABLE `pembayaran` (
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_pembelian`, `nama`, `bank`, `jumlah`, `tanggal`, `bukti`) VALUES
 (2, 26, 'Awidya Andika', 'BNI', 16500, '2020-06-13', '20200613200143download.jpg'),
-(3, 27, 'Awidya Andika', 'BCA', 13000, '2020-06-14', '2020061403085160320989_568cf4ce-70ce-4905-b641-e8b5f6ed36c9_690_690.jpg');
+(3, 27, 'Awidya Andika', 'BCA', 13000, '2020-06-14', '2020061403085160320989_568cf4ce-70ce-4905-b641-e8b5f6ed36c9_690_690.jpg'),
+(4, 32, 'Wulan', 'BCA', 19500, '2020-06-14', '20200614063629struk-pembayaran-tagihan-listrik-indomaret.jpg');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,9 @@ INSERT INTO `pembelian` (`id_pembelian`, `id_pelanggan`, `id_ongkir`, `tanggal_p
 (27, 2, 2, '2020-06-13', 13000, 'Denpasar Barat', 10000, 'Jl Pasutri Gaje', 'BCA132', 'Barang dikirim'),
 (28, 2, 1, '2020-06-13', 11000, 'Kota Denpasar', 10000, 'Jl. Gunung Agung 3', '', 'Pending'),
 (29, 2, 1, '2020-06-13', 23000, 'Kota Denpasar', 10000, 'Jl. Watu Renggong', '', 'Pending'),
-(30, 2, 2, '2020-06-13', 16500, 'Denpasar Barat', 10000, 'Jl. Subak Badra', '', 'Pending');
+(30, 2, 2, '2020-06-13', 16500, 'Denpasar Barat', 10000, 'Jl. Subak Badra', '', 'Pending'),
+(31, 2, 1, '2020-06-14', 11000, 'Kota Denpasar', 10000, 'Jl. Kenari 25', '', 'Pending'),
+(32, 3, 1, '2020-06-14', 19500, 'Kota Denpasar', 10000, 'Jl. Badak 3', '', 'Processing');
 
 -- --------------------------------------------------------
 
@@ -174,7 +177,12 @@ INSERT INTO `pembelian_produk` (`id_pembelian_produk`, `id_pembelian`, `id_produ
 (41, 29, 9, 2, 'Brokoli', 3000, 300, 600, 6000),
 (42, 30, 7, 1, 'Apel', 1000, 100, 100, 1000),
 (43, 30, 8, 1, 'Tomat', 2500, 200, 200, 2500),
-(44, 30, 9, 1, 'Brokoli', 3000, 300, 300, 3000);
+(44, 30, 9, 1, 'Brokoli', 3000, 300, 300, 3000),
+(45, 31, 7, 1, 'Apel', 1000, 100, 100, 1000),
+(46, 32, 7, 1, 'Apel', 1000, 100, 100, 1000),
+(47, 32, 8, 1, 'Tomat', 2500, 200, 200, 2500),
+(48, 32, 9, 1, 'Brokoli', 3000, 300, 300, 3000),
+(49, 32, 11, 1, 'Salak', 3000, 500, 500, 3000);
 
 -- --------------------------------------------------------
 
@@ -197,10 +205,10 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `stok_produk`, `berat_produk`, `foto_produk`, `deskripsi_produk`) VALUES
-(7, 'Apel', 1000, 5, 100, 'apple1.jpg', 'Apel Segar			\r\n			'),
-(8, 'Tomat', 2500, 4, 200, '7f703281cd786114dd4ca14cab56dcdb.jpg', 'Tomat Segar'),
-(9, 'Brokoli', 3000, 4, 300, 'brokoli.jpg', 'Brokoli Segar'),
-(11, 'Salak', 3000, 4, 500, '8882996_edf79751-98c0-4bb8-a1b7-2955db6515ba_1000_875.jpg', 'Salak Segar');
+(7, 'Apel', 1000, 3, 100, 'apple1.jpg', 'Apel Segar			\r\n			'),
+(8, 'Tomat', 2500, 3, 200, '7f703281cd786114dd4ca14cab56dcdb.jpg', 'Tomat Segar'),
+(9, 'Brokoli', 3000, 3, 300, 'brokoli.jpg', 'Brokoli Segar'),
+(11, 'Salak', 3000, 3, 500, '8882996_edf79751-98c0-4bb8-a1b7-2955db6515ba_1000_875.jpg', 'Salak Segar');
 
 --
 -- Indexes for dumped tables
@@ -274,19 +282,19 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `pembelian_produk`
 --
 ALTER TABLE `pembelian_produk`
-  MODIFY `id_pembelian_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_pembelian_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `produk`

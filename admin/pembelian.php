@@ -34,7 +34,7 @@
 				<td><?php echo $data['status_pembelian']; ?></td>
 				<td>
 					<a href="index.php?halaman=detail&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-info">Detail</a>
-					<?php if($data['status_pembelian']=='Processing') : ?>
+					<?php if($data['status_pembelian'] !=='Pending') : ?>
 					<a href="index.php?halaman=pembayaran&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-success">Cek</a>
 					<?php endif ?>
 				</td>

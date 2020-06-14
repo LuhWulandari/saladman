@@ -50,7 +50,11 @@
 						</td>
 						<td>
 							<a href="nota.php?id=<?php echo $data['id_pembelian']; ?>" class="btn btn-info">Nota</a>
-							<a href="pembayaran.php?id=<?php echo $data['id_pembelian']; ?>" class="btn btn-success">Pembayaran</a>
+							<?php if($data['status_pembelian']=='Pending') : ?>
+							<a href="pembayaran.php?id=<?php echo $data['id_pembelian']; ?>" class="btn btn-success">Bayar</a>
+							<?php else: ?>
+							<a href="lihat-pembayaran.php?id=<?php echo $data['id_pembelian']; ?>" class="btn btn-warning">Lihat Pembayaran</a>
+							<?php endif ?>
 						</td>
 					</tr>
 					<?php

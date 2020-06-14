@@ -11,6 +11,7 @@
 		$query = $koneksi->query("SELECT * FROM pembayaran WHERE id_pembelian = '$id_pembelian'");
 		$data  = $query->fetch_assoc();
 	?>
+	<h2>Detail Pembayaran</h2>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table">
