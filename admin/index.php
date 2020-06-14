@@ -23,6 +23,8 @@
     <link href="assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+       <!-- JQUERY SCRIPTS -->
+       <script src="assets/js/jquery-1.10.2.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -49,11 +51,13 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                     <img src="assets/img/find_user.png" class="user-image img-responsive"/>
 					</li>
 
-                    <li><a href="index.php"><i class="fa fa-home fa-3x"></i> Home</a></li>	
-                    <li><a href="index.php?halaman=produk"><i class="fa fa-archive fa-3x"></i> Produk</a></li> 
-                    <li><a href="index.php?halaman=pembelian"><i class="fa fa-shopping-cart fa-3x"></i> Pembelian</a></li> 
-                    <li><a href="index.php?halaman=pelanggan"><i class="fa fa-user fa-3x"></i> Pelanggan</a></li>
-                    <li><a href="index.php?halaman=logout"><i class="fa fa-power-off fa-3x"></i> Logout</a></li>  
+                    <li><a href="index.php"><i class="fa fa-home "></i> Home</a></li>
+                    <li><a href="index.php?halaman=kategori"><i class="fa fa-list"></i> Kategori Produk</a></li> 
+                    <li><a href="index.php?halaman=produk"><i class="fa fa-archive "></i> Produk</a></li> 
+                    <li><a href="index.php?halaman=pembelian"><i class="fa fa-shopping-cart "></i> Pembelian</a></li>
+                    <li><a href="index.php?halaman=laporan_pembelian"><i class="fa fa-file "></i> Laporan Pembelian</a></li>  
+                    <li><a href="index.php?halaman=pelanggan"><i class="fa fa-user "></i> Pelanggan</a></li>
+                    <li><a href="index.php?halaman=logout"><i class="fa fa-power-off "></i> Logout</a></li>  
                 </ul>
                
             </div>
@@ -100,6 +104,18 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
                         elseif($_GET['halaman']=='pembayaran'){
                             include 'pembayaran.php';
                         }
+                        elseif($_GET['halaman']=='laporan_pembelian'){
+                            include 'laporan_pembelian.php';
+                        }
+                        elseif($_GET['halaman']=='kategori'){
+                            include 'kategori.php';
+                        }
+                        elseif($_GET['halaman']=='detailproduk'){
+                            include 'detailproduk.php';
+                        }
+                        elseif($_GET['halaman']=='hapusfotoproduk'){
+                            include 'hapusfotoproduk.php';
+                        }
                     }
                     else{
                         include 'home.php';
@@ -112,8 +128,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="logout.php" class="
         </div>
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->

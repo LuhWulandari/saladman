@@ -4,6 +4,17 @@
 	<title>SALADMAN | UBAH PRODUK</title>
 </head>
 <body>
+<?php
+$datakategori=array();
+$query=$koneksi->query("SELECT * FROM kategori");
+while($data = $query->fetch_assoc())
+{
+    $datakategori[]=$data;
+}
+//echo"<pre>";
+//print_r($datakategori);
+//echo"</pre>";
+?>
 	<h2>Ubah Produk</h2>
 	<?php
 		//Query menampilkan tabel "produk" berdasarkan id_produk
@@ -15,6 +26,17 @@
 		// echo "</pre>";
 	?>
 	<form method="POST" enctype="multipart/form-data">
+		<div class="form-group">
+			<label>Kategori</label>
+			<select class="form-control" name="id_kategori">
+				<option value="">Pilih Kategori</option>
+				<?php foreach ($datakategori as $key =>$value): ?>
+				<option value="<?php echo $value["id_kategori"] ?>"<?php if($data["id_kategori"]==$value["id_kategori"]){echo "selected";} ?> >
+					<?php echo $value["nama_kategori"] ?>
+				</option>
+				<?php endforeach ?>
+			</select>
+		</div>
 		<div class="form-group">
 			<label>Nama</label>
 			<input type="text" class="form-control" name="nama" value="<?php echo $data['nama_produk']; ?>">
@@ -60,14 +82,16 @@
 					                               stok_produk      = '$_POST[stok]',
 					                               berat_produk     = '$_POST[berat]',
 					                               foto_produk      = '$nama',
-					                               deskripsi_produk = '$_POST[deskripsi]'
+					                               deskripsi_produk = '$_POST[deskripsi]',
+												   id_kategori 		= '$_POST[id_kategori]
 					                               WHERE id_produk  = '$_GET[id]'");
 			}else{
 				$koneksi->query("UPDATE produk SET nama_produk      = '$_POST[nama]',
 					                               harga_produk     = '$_POST[harga]',
 					                               stok_produk      = '$_POST[stok]',
 					                               berat_produk     = '$_POST[berat]',
-					                               deskripsi_produk = '$_POST[deskripsi]'
+					                               deskripsi_produk = '$_POST[deskripsi]',
+												   id_kategori 		= '$_POST[id_kategori]
 					                               WHERE id_produk  = '$_GET[id]'");
 			}
 			echo "<script>alert('Data produk telah dirubah!');</script>";
