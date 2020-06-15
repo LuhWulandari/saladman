@@ -40,6 +40,7 @@
 		<label>Status</label>
 		<select class="form-control" name="status">
 			<option value="">Pilih Status</option>
+			<option value="Di Batalkan">Di Batalkan</option>
 			<option value="Barang dikirim">Barang Dikirim</option>
 			<option value="Lunas">Lunas</option>
 			<option value="Batal">Batal</option>
