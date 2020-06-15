@@ -26,8 +26,8 @@
 			<td><?php echo $data['telepon_pelanggan']; ?></td>
 			<td><?php echo $data['alamat_pelanggan']; ?></td>
 			<td>
-				<a href="index.php?halaman=ubah-pelanggan&id=<?php echo $data['id_pelanggan']; ?>" class="btn btn-warning">Ubah</a>
-				<a href="index.php?halaman=hapus-pelanggan&id=<?php echo $data['id_pelanggan']; ?>" class="btn-danger btn">Hapus</a>
+				<a href="index.php?halaman=ubah-pelanggan&id=<?php echo $data['id_pelanggan']; ?>" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Ubah</a>
+				<a href="index.php?halaman=hapus-pelanggan&id=<?php echo $data['id_pelanggan']; ?>" class="btn-danger btn"><span class="glyphicon glyphicon-trash"></span> Hapus</a>
 			</td>
 		</tr>
 		<?php
@@ -36,4 +36,4 @@
 		?>
 	</tbody>
 </table>
-<a href="index.php?halaman=tambah-pelanggan" class="btn btn-primary">Tambah Data</a>
+<a href="index.php?halaman=tambah-pelanggan" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Tambah Data</a>

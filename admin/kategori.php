@@ -22,11 +22,11 @@
                 <td><?php echo $key+1 ?></td>
                 <td><?php echo $value["nama_kategori"] ?></td>
                 <td>
-                    <a href="index.php?halaman=ubah-kategori&id=<?php echo $value['id_kategori']; ?>" class="btn btn-warning btn-sm">Ubah</a>
-                    <a href="index.php?halaman=hapus-kategori&id=<?php echo $value['id_kategori']; ?>" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="index.php?halaman=ubah-kategori&id=<?php echo $value['id_kategori']; ?>" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span> Ubah</a>
+                    <a href="index.php?halaman=hapus-kategori&id=<?php echo $value['id_kategori']; ?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Hapus</a>
                 </td>
             </tr>
         <?php endforeach ?>
     </tbody>
 </table>
-<a href="index.php?halaman=tambah-kategori" class="btn btn-success">Tambah Data</a>
+<a href="index.php?halaman=tambah-kategori" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Tambah Data</a>

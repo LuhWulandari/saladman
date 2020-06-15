@@ -62,7 +62,7 @@
                 <a href="index.php?halaman=pembelian"><i class="fa fa-shopping-cart "></i> Pembelian</a>
             </li>
             <li>
-                <a href="index.php?halaman=laporan_pembelian"><i class="fa fa-file "></i> Laporan Pembelian</a>
+                <a href="index.php?halaman=laporan-pembelian"><i class="fa fa-file "></i> Laporan Pembelian</a>
             </li>
             <li>
                 <a href="index.php?halaman=pelanggan"><i class="fa fa-user "></i> Pelanggan</a>
@@ -114,8 +114,8 @@
                     elseif($_GET['halaman']=='pembayaran'){
                         include 'pembayaran.php';
                     }
-                    elseif($_GET['halaman']=='laporan_pembelian'){
-                        include 'laporan_pembelian.php';
+                    elseif($_GET['halaman']=='laporan-pembelian'){
+                        include 'laporan-pembelian.php';
                     }
                     elseif($_GET['halaman']=='kategori'){
                         include 'kategori.php';
@@ -129,11 +129,11 @@
                     elseif($_GET['halaman']=='hapus-kategori'){
                         include 'hapus-kategori.php';
                     }
-                    elseif($_GET['halaman']=='detailproduk'){
-                        include 'detailproduk.php';
+                    elseif($_GET['halaman']=='detail-produk'){
+                        include 'detail-produk.php';
                     }
-                    elseif($_GET['halaman']=='hapusfotoproduk'){
-                        include 'hapusfotoproduk.php';
+                    elseif($_GET['halaman']=='hapus-fotoproduk'){
+                        include 'hapus-fotoproduk.php';
                     }
                 }
                 else{

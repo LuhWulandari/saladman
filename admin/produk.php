@@ -1,5 +1,5 @@
 <h2>Data Produk</h2>
-<a href="index.php?halaman=tambah-produk" class="btn btn-success navbar-right"> <span class="glyphicon glyphicon-plus"></span>Tambah Produk</a>
+<a href="index.php?halaman=tambah-produk" class="btn btn-success navbar-right"> <span class="glyphicon glyphicon-plus"></span> Tambah Produk</a>
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -35,9 +35,9 @@
 			</td> 
 			<td><?php echo $data['deskripsi_produk']; ?></td>
 			<td>
-				<a href="index.php?halaman=ubah-produk&id=<?php echo $data['id_produk']; ?>" class="btn btn-warning">Ubah</a>
-				<a href="index.php?halaman=hapus-produk&id=<?php echo $data['id_produk']; ?>" class="btn-danger btn">Hapus</a>
-				<a href="index.php?halaman=detailproduk&id=<?php echo $data['id_produk']; ?>" class="btn btn-info">Detail</a>
+				<a href="index.php?halaman=ubah-produk&id=<?php echo $data['id_produk']; ?>" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span> Ubah</a>
+				<a href="index.php?halaman=hapus-produk&id=<?php echo $data['id_produk']; ?>" class="btn-danger btn"><span class="glyphicon glyphicon-trash"></span> Hapus</a>
+				<a href="index.php?halaman=detail-produk&id=<?php echo $data['id_produk']; ?>" class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span> Detail</a>
 			</td>
 		</tr>
 		<?php

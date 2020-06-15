@@ -27,9 +27,9 @@
 			<td>Rp. <?php echo number_format($data['total_pembelian']); ?> ,-</td>
 			<td><?php echo $data['status_pembelian']; ?></td>
 			<td>
-				<a href="index.php?halaman=detail&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-info">Detail</a>
+				<a href="index.php?halaman=detail&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span> Detail</a>
 				<?php if($data['status_pembelian'] !== 'Pending') : ?>
-				<a href="index.php?halaman=pembayaran&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-success">Cek</a>
+				<a href="index.php?halaman=pembayaran&id=<?php echo $data['id_pembelian']; ?>" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Cek</a>
 				<?php endif ?>
 			</td>
 		</tr>
