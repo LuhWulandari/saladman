@@ -1,17 +1,14 @@
-<?php include 'koneksi.php';?>
 <?php
-$keyword = $_GET["keyword"];
+    include 'koneksi.php';
+    $keyword = $_GET["keyword"];
 
-$semuadata=array();
-$query = $koneksi->query("SELECT * FROM produk WHERE nama_produk LIKE '%$keyword%'
-OR deskripsi_produk LIKE '%$keyword%'");
-while($data = $query->fetch_assoc())
-{
-    $semuadata[]=$data;
-}
-echo "<pre>";
-print_r($semuadata);
-echo "</pre>";
+    $semuadata  = array();
+    $query      = $koneksi->query("SELECT * FROM produk WHERE nama_produk LIKE '%$keyword%'
+    OR deskripsi_produk LIKE '%$keyword%' ORDER BY nama_produk ASC");
+    while($data = $query->fetch_assoc())
+    {
+        $semuadata[] = $data;
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,8 +38,6 @@ echo "</pre>";
                 </div>
             </div>
             <?php endforeach ?>
-
-
         </div>
     </div>
 </body>

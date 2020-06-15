@@ -61,7 +61,7 @@
 		//Mengubah dan menyimpan File
 		$nama = $_FILES['foto']['name'];
 		$lokasi = $_FILES['foto']['tmp_name'];
-		//Jika file dirubah
+		//Jika mangganti foto
 		if(!empty($lokasi)){
 			move_uploaded_file($lokasi, "../foto_produk/$nama");
 			$koneksi->query("UPDATE produk SET nama_produk      = '$_POST[nama]',
@@ -72,7 +72,9 @@
 				                               deskripsi_produk = '$_POST[deskripsi]',
 											   id_kategori 		= '$_POST[id_kategori]
 					                           WHERE id_produk  = '$_GET[id]'");
-		}else{
+		}
+		//Jika tidak mengganti mengganti foto
+		else{
 			$koneksi->query("UPDATE produk SET nama_produk      = '$_POST[nama]',
 					                           harga_produk     = '$_POST[harga]',
 					                           stok_produk      = '$_POST[stok]',

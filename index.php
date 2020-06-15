@@ -15,7 +15,7 @@
 			<h1>Produk Terbaru</h1>
 			<div class="row">
 				<?php
-					$query = $koneksi->query("SELECT * FROM produk");
+					$query = $koneksi->query("SELECT * FROM produk ORDER BY nama_produk ASC");
 					while($data = $query->fetch_assoc()){
 				?>
 				<div class="col-md-3">

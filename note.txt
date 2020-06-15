@@ -5,7 +5,8 @@
 
 *REVISI*
 1. Rubah syntax update 'update-pelanggan.php' menjadi lebih simple
-2. <pre></pre> di home.php dihapus
+2. <pre></pre> di home.php admin dihapus
 3. Bagian index.php ketika klik Beli, jumlahnya tidak bisa ditambah dengan beli di tombol Detail
-4. Pada pembayaran.php di Admin, tambahkan kurir pengiriman seperti JNE, TIKI, Dll
+4. Pada pembayaran.php di Admin, tambahkan nama kurir pengiriman seperti JNE, TIKI, Dll
 5. Pada tombol Beli di index.php konsumen, jangan lupa dihubungkan dengan stok
+6. Ketika update foto produk, hapus foto yang lama dan simpan foto yang baru
