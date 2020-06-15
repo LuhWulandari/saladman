@@ -1,22 +1,20 @@
 <?php
-$semuadata=array();
-$tgl_mulai="-";
-$tgl_selesai="-";
-if (isset($_POST["kirim"]))
-{
-    $tgl_mulai = $_POST["tglm"];
-    $tgl_selesai = $_POST["tgls"];
-    $query=$koneksi->query("SELECT * FROM pembelian pm LEFT JOIN pelanggan pl ON pm.id_pelanggan=pl.id_pelanggan
-    WHERE tanggal_pembelian BETWEEN '$tgl_mulai' AND '$tgl_selesai'");
-    while ($data = $query->fetch_assoc())
+    $semuadata   = array();
+    $tgl_mulai   = "-";
+    $tgl_selesai = "-";
+    
+    if(isset($_POST["kirim"]))
     {
-        $semuadata[]=$data;
+        $tgl_mulai = $_POST["tglm"];
+        $tgl_selesai = $_POST["tgls"];
+        $query=$koneksi->query("SELECT * FROM pembelian pm LEFT JOIN pelanggan pl ON pm.id_pelanggan=pl.id_pelanggan
+        WHERE tanggal_pembelian BETWEEN '$tgl_mulai' AND '$tgl_selesai'");
+        while ($data = $query->fetch_assoc())
+        {
+            $semuadata[]=$data;
+        }
     }
-}
-
 ?>
-
-
 <h2> Laporan Pembelian dari <?php echo $tgl_mulai?> sampai <?php echo $tgl_selesai ?></h2>
 <hr>
 <form method="post">
@@ -39,7 +37,6 @@ if (isset($_POST["kirim"]))
         </div>
     </div>
 </form>
-
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -51,9 +48,9 @@ if (isset($_POST["kirim"]))
         </tr>
     </thead>
     <tbody>
-        <?php $total=0; ?>
+        <?php $total = 0; ?>
         <?php foreach ($semuadata as $key =>$value): ?>
-        <?php $total+=$value['total_pembelian'] ?>
+        <?php $total += $value['total_pembelian'] ?>
         <tr>
             <td><?php echo $key+1; ?></td>
             <td><?php echo $value["nama_pelanggan"] ?></td>

@@ -1,20 +1,19 @@
 <?php 
+	$id_foto = $_GET["idfoto"];
+	$id_produk = $_GET["idproduk"];
 
-$id_foto = $_GET["idfoto"];
-$id_produk = $_GET["idproduk"];
+	//ambil data
+	$queryfoto = $koneksi->query("SELECT * FROM produk_foto WHERE id_foto_produk='$id_foto'");
+	$detailfoto = $queryfoto->fetch_assoc();
 
-//ambil data
-$queryfoto = $koneksi->query("SELECT * FROM produk_foto WHERE id_foto_produk='$id_foto'");
-$detailfoto = $queryfoto->fetch_assoc();
-
-$namafilefoto = $detailfoto["nama_produk_foto"];
-//hapus file foto dari folder
-unlink("../foto_produk".$namafilefoto);
+	$namafilefoto = $detailfoto["nama_produk_foto"];
+	//hapus file foto dari folder
+	unlink("../foto_produk".$namafilefoto);
 
 
-//menghapus data di mysql
-$koneksi ->query("DELETE FROM produk_foto WHERE id_foto_produk='$id_foto'");
+	//menghapus data di mysql
+	$koneksi ->query("DELETE FROM produk_foto WHERE id_foto_produk='$id_foto'");
 
-echo "<script>alert('Foto Produk terhapus!');</script>";
-echo "<script>location='index.php?halaman=detailproduk&id=$id_produk';</script>";
+	echo "<script>alert('Foto Produk terhapus!');</script>";
+	echo "<script>location='index.php?halaman=detailproduk&id=$id_produk';</script>";
 ?>
