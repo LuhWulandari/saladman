@@ -1,16 +1,16 @@
-<?php
-	$datakategori = array();
-	$query = $koneksi->query("SELECT * FROM kategori");
-	while($data = $query->fetch_assoc())
-	{
-    	$datakategori[]=$data;
-	}
-?>
 <h2>Ubah Produk</h2>
 <?php
 	//Query menampilkan tabel "produk" berdasarkan id_produk
 	$query = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$_GET[id]'");
 	$data  = $query->fetch_assoc();
+?>
+<?php
+	$datakategori = array();
+	$query        = $koneksi->query("SELECT * FROM kategori");
+	while($data2  = $query->fetch_assoc())
+	{
+    	$datakategori[] = $data2;
+	}
 ?>
 <form method="POST" enctype="multipart/form-data">
 	<div class="form-group">
@@ -18,7 +18,7 @@
 		<select class="form-control" name="id_kategori">
 			<option value="">Pilih Kategori</option>
 			<?php foreach ($datakategori as $key =>$value): ?>
-			<option value="<?php echo $value["id_kategori"] ?>"<?php if($data["id_kategori"]==$value["id_kategori"]){echo "selected";} ?> >
+			<option value="<?php echo $value["id_kategori"]; ?>"<?php if($data["id_kategori"] == $value["id_kategori"]){echo "selected";} ?> >
 				<?php echo $value["nama_kategori"] ?>
 			</option>
 			<?php endforeach ?>
@@ -61,7 +61,7 @@
 		//Mengubah dan menyimpan File
 		$nama = $_FILES['foto']['name'];
 		$lokasi = $_FILES['foto']['tmp_name'];
-		//Jika mangganti foto
+		//Jika file dirubah
 		if(!empty($lokasi)){
 			move_uploaded_file($lokasi, "../foto_produk/$nama");
 			$koneksi->query("UPDATE produk SET nama_produk      = '$_POST[nama]',
@@ -70,17 +70,15 @@
 				                               berat_produk     = '$_POST[berat]',
 				                               foto_produk      = '$nama',
 				                               deskripsi_produk = '$_POST[deskripsi]',
-											   id_kategori 		= '$_POST[id_kategori]
+											   id_kategori 		= '$_POST[id_kategori]'
 					                           WHERE id_produk  = '$_GET[id]'");
-		}
-		//Jika tidak mengganti mengganti foto
-		else{
+		}else{
 			$koneksi->query("UPDATE produk SET nama_produk      = '$_POST[nama]',
 					                           harga_produk     = '$_POST[harga]',
 					                           stok_produk      = '$_POST[stok]',
 					                           berat_produk     = '$_POST[berat]',
 					                           deskripsi_produk = '$_POST[deskripsi]',
-											   id_kategori 		= '$_POST[id_kategori]
+											   id_kategori 		= '$_POST[id_kategori]'
 					                           WHERE id_produk  = '$_GET[id]'");
 		}
 		echo "<script>alert('Data produk telah dirubah!');</script>";
