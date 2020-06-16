@@ -54,7 +54,7 @@
 			<?php echo $data['deskripsi_produk']; ?>		
 		</textarea>
 	</div>
-	<button class="btn btn-primary" name="ubah">Ubah</button>
+	<button class="btn btn-warning" name="ubah"><span class="glyphicon glyphicon-floppy-save"></span> Ubah</button>
 </form><br>
 <?php 
 	if(isset($_POST['ubah'])){
