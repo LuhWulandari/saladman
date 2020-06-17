@@ -8,16 +8,21 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-	<title>SALADMAN | NOTA PEMBELIAN</title>
-	<link rel="stylesheet" type="text/css" href="admin/assets/css/bootstrap.css">
-</head>
-<body>
-	<?php include 'menu.php'; ?>
-	<section class="konten">
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>SALADMAN | Nota Pembayaran</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	</head>
+	<body>
+		<?php include 'menu.php'; ?>
+
 		<div class="container">
-			<h2>Detail Pembelian</h2>
+			<h3 class="my-4">Nota Pembayaran</h3>
 			<?php 
 				//Query Inner Join pada tabel "pembelian" dan tabel "pelanggan"
 				$query = $koneksi->query("SELECT * FROM pembelian JOIN pelanggan 
@@ -38,77 +43,130 @@
                 	exit();
 				}
 			?>
-			<div class ="row">
-					<div class="col-md-4">
-						<h3>Pembelian</h3>
-						<strong> No. Pembelian <?php echo $detail['id_pembelian']; ?></strong><br>
-						Tanggal : <?php echo $detail['tanggal_pembelian']; ?> <br>
-						Total : Rp. <?php echo number_format($detail['total_pembelian']); ?> ,-
-					</div>
-					<div class="col-md-4">
-						<h3>Pelanggan</h3>
-						<strong> Nama : <?php echo $detail['nama_pelanggan']; ?></strong><br>
-						<p>
-							Telepon : <?php echo $detail['telepon_pelanggan']; ?> <br>
-							Email : <?php echo $detail['email_pelanggan']; ?> <br>
-							Alamat : <?php echo $detail['alamat_pelanggan']; ?>
-						</p>
-					</div>
-					<div class="col-md-4">
-						<h3>Pengiriman</h3>
-						<strong> Nama Kota : <?php echo $detail['nama_kota']; ?></strong><br>
-						Ongkos Kirim : Rp. <?php echo number_format($detail['tarif']); ?> ,- <br>
-						Alamat Pengiriman: <?php echo $detail['alamat_pengiriman']; ?>
-					</div>
-			</div>
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>No</th>
-						<th>Nama Produk</th>
-						<th>Harga</th>
-						<th>Berat</th>
-						<th>Jumlah</th>
-						<th>Subberat</th>
-						<th>Subtotal</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					    //Query Inner Join pada tabel "pembelian_produk" dan tabel "produk" 
-						$query = $koneksi->query("SELECT * FROM pembelian_produk WHERE id_pembelian= '$_GET[id]'");
-						//Membuat nomor urut
-						$nomor = 1;
-						//Menampilkan data
-						while($data = $query->fetch_assoc()){                   
-				    ?>
-					<tr>
-						<td><?php echo $nomor; ?></td>
-						<td><?php echo $data['nama']; ?></td>
-						<td>Rp. <?php echo number_format($data['harga']); ?> ,-</td>
-						<td><?php echo $data['berat']; ?> gr. </td>
-						<td><?php echo $data['jumlah']; ?></td>
-						<td><?php echo $data['subberat']; ?> gr. </td>
-						<td>Rp. <?php echo number_format($data['subharga']); ?> ,-</td>
-					</tr>
-					<?php
-						$nomor++; 
-						}
-					?>
-				</tbody>
-			</table>
 			<div class="row">
-				<div class="col-md-7">
-					<div class="alert alert-info">
-						<p>
-							Silahkan melakukan pembayaran sebesar Rp. <?php echo number_format($detail['total_pembelian']); ?> ,-
-							<br>
-							<strong>BANK MANDIRI 143-00103022-3242 An/ ADMIN SALADMAN</strong>
-						</p>
-					</div>
+				<div class="col-md-4">
+					<h3 class="my-4">Pembelian</h3>
+					<table class="table-responsive">
+						<tr>
+							<th scope="col">No. Pembelian</th>
+							<td scope="col">:</td>
+							<td scope="col"><?php echo $detail['id_pembelian']; ?></td>
+						</tr>
+						<tr>
+							<th scope="col">Tanggal</th>
+							<td scope="col">:</td>
+							<td scope="col"><?php echo $detail['tanggal_pembelian']; ?></td>
+						</tr>
+						<tr>
+							<th scope="col">Total</th>
+							<td scope="col">:</td>
+							<td scope="col">Rp. <?php echo number_format($detail['total_pembelian']); ?></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-md-4">
+					<h3 class="my-4">Pelanggan</h3>
+					<table class="table-responsive">
+						<tr>
+							<th scope="col">Nama</th>
+							<td scope="col">:</td>
+							<td scope="col"><?php echo $detail['nama_pelanggan']; ?></td>
+						</tr>
+						<tr>
+							<th scope="col">Telepon</th>
+							<td scope="col">:</td>
+							<td scope="col"><?php echo $detail['telepon_pelanggan']; ?></td>
+						</tr>
+						<tr>
+							<th scope="col">Email</th>
+							<td scope="col">:</td>
+							<td scope="col"><?php echo $detail['email_pelanggan']; ?></td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-md-4">
+					<h3 class="my-4">Pengiriman</h3>
+					<table class="table-responsive">
+						<tr>
+							<th scope="col">Kota</th>
+							<td scope="col">:</td>
+							<td scope="col"><?php echo $detail['nama_kota']; ?></td>
+						</tr>
+						<tr>
+							<th scope="col">Ongkos kirim</th>
+							<td scope="col">:</td>
+							<td scope="col">Rp. <?php echo number_format($detail['tarif']); ?></td>
+						</tr>
+						<tr>
+							<th scope="col">Alamat</th>
+							<td scope="col">:</td>
+							<td scope="col"><?php echo $detail['alamat_pengiriman']; ?></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<br>
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+						   	<th scope="col">No</th>
+						    <th scope="col">Produk</th>
+						    <th scope="col">Harga</th>
+						    <th scope="col">Berat</th>
+						    <th scope="col">Jumlah</th>
+						    <th scope="col">Subberat</th>
+						    <th scope="col">Subharga</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						    //Query Inner Join pada tabel "pembelian_produk" dan tabel "produk" 
+							$query = $koneksi->query("SELECT * FROM pembelian_produk WHERE id_pembelian= '$_GET[id]'");
+							//Membuat nomor urut
+							$nomor = 1;
+							//Menampilkan data
+							while($data = $query->fetch_assoc()){                   
+					    ?> 
+					   <tr>
+						    <th scope="row"><?php echo $nomor; ?></th>
+						    <td><?php echo $data['nama']; ?></td>
+							<td>Rp. <?php echo number_format($data['harga']); ?></td>
+							<td><?php echo $data['berat']; ?> gr. </td>
+							<td><?php echo $data['jumlah']; ?></td>
+							<td><?php echo $data['subberat']; ?> gr. </td>
+							<td>Rp. <?php echo number_format($data['subharga']); ?></td>
+						</tr>
+						<?php 
+							$nomor++; 
+							}
+						?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="alert alert-info">
+					<p>
+						Silahkan melakukan pembayaran sebesar <b>Rp. <?php echo number_format($detail['total_pembelian']); ?></b> pada
+						<br>
+						<strong>BANK MANDIRI 143-00103022-3242 An/ ADMIN SALADMAN</strong>
+						<br>
+						*Biaya sudah termasuk dengan ongkir
+					</p>
 				</div>
 			</div>
 		</div>
-	</section>
-</body>
+		</div>
+
+		<?php include 'footer.php'; ?>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script></body>
 </html>
