@@ -1,4 +1,4 @@
-<h2>Data Produk</h2>
+<h2>Data Pelanggan</h2>
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -36,4 +36,4 @@
 		?>
 	</tbody>
 </table>
-<a href="index.php?halaman=tambah-pelanggan" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Tambah Data</a>
+<!-- <a href="index.php?halaman=tambah-pelanggan" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Tambah Data</a> -->

@@ -62,7 +62,7 @@
 			                    <div class="input-group">
 			                       <input type="number" min="1" class="form-control" placeholder="Masukkan jumlah yang ingin dibeli" name="jumlah" max="<?php echo $data['stok_produk'] ?>">
 			                        <div class="input-group-btn">
-			                            <button class="btn btn-success" name="beli">Beli</button>
+			                            <button class="btn btn-success" name="beli"> Beli</button>
 			                        </div>
 			                    </div>
 			                    <hr>

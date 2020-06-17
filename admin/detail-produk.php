@@ -52,7 +52,7 @@
         <label> File Foto </label>
         <input type="file" name="produk_foto">
     </div>
-    <button class="btn btn-primary" name="simpan" value="simpan" ><span class="glyphicon glyphicon-saved"></span>>Simpan</button>
+    <button class="btn btn-primary" name="simpan" value="simpan" ><span class="glyphicon glyphicon-saved"></span> Simpan</button>
 </form>
 
 <?php 

@@ -50,8 +50,7 @@
 	</div>
 	<div class="form-group">
 		<label>Deskripsi</label>
-		<textarea class="form-control" name="deskripsi" rows="10">
-			<?php echo $data['deskripsi_produk']; ?>		
+		<textarea class="form-control" name="deskripsi" rows="10"><?php echo $data['deskripsi_produk']; ?>		
 		</textarea>
 	</div>
 	<button class="btn btn-warning" name="ubah"><span class="glyphicon glyphicon-floppy-save"></span> Ubah</button>
