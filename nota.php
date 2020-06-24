@@ -17,6 +17,14 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<style type="text/css" media="print">
+			.print{
+				visibility: hidden;
+			}
+			.kembali{
+				visibility: hidden;
+			}
+		</style>
 	</head>
 	<body>
 		<?php include 'menu.php'; ?>
@@ -107,7 +115,7 @@
 			</div>
 			<br>
 			<div class="table-responsive">
-				<table class="table table-striped">
+				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
 						   	<th scope="col">No</th>
@@ -142,6 +150,12 @@
 							}
 						?>
 					</tbody>
+					<tfoot>
+						<tr>
+                            <th colspan="6">Total</th>
+                            <th>Rp. <?php echo number_format($detail['total_pembelian']) ?></th>
+                        </tr>
+					</tfoot>
 				</table>
 			</div>
 		</div>
@@ -157,6 +171,10 @@
 						<br>
 						*Biaya sudah termasuk dengan ongkir
 					</p>
+				</div>
+				<div class="form-group">							
+					<button class="print btn btn-info" onclick="window.print();return false;">Print</button>
+					<button class="print btn btn-primary" onclick="history.back()">Kembali</button>						
 				</div>
 			</div>
 		</div>

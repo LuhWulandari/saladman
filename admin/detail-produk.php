@@ -1,79 +1,58 @@
 <?php 
     $id_produk = $_GET["id"];
-    $query	= $koneksi->query("SELECT * FROM produk LEFT JOIN kategori ON produk.id_kategori = kategori.id_kategori WHERE id_produk='$id_produk'");
+    $query  = $koneksi->query("SELECT * FROM produk LEFT JOIN kategori ON produk.id_kategori = kategori.id_kategori WHERE id_produk='$id_produk'");
     $detailproduk = $query->fetch_assoc();
 
     $fotoproduk = array();
-    $queryfoto	= $koneksi->query("SELECT * FROM produk_foto WHERE id_produk='$id_produk'");
+    $queryfoto  = $koneksi->query("SELECT * FROM produk_foto WHERE id_produk='$id_produk'");
     while($tiap = $queryfoto->fetch_assoc())
     {
         $fotoproduk[] = $tiap;
     }
 ?>
-<h2>Detail Produk</h2>
-<table class="table">
-    <tr>
-        <th> Kategori </th>
-        <td><?php echo $detailproduk["nama_kategori"];?></td>
-    </tr>
-    <tr>
-        <th> Produk </th>
-        <td><?php echo $detailproduk["nama_produk"];?></td>
-    </tr>
-    <tr>
-        <th> Harga </th>
-        <td>Rp. <?php echo number_format($detailproduk["harga_produk"]);?></td>
-    </tr>
-    <tr>
-        <th> Berat </th>
-        <td><?php echo $detailproduk["berat_produk"];?></td>
-    </tr>
-    <tr>
-        <th> Deskripsi </th>
-        <td><?php echo $detailproduk["deskripsi_produk"];?></td>
-    </tr>
-    <tr>
-        <th> Stok </th>
-        <td><?php echo $detailproduk["stok_produk"];?></td>
-    </tr>
-</table>
-
-<div class="row">
-    <?php foreach ($fotoproduk as $key => $value): ?>
-    <div class="col-md-3 text-center">
-        <img src="../foto_produk/<?php echo $value["nama_produk_foto"] ?>" alt="" class="img-responsive"><br>
-        <a href="index.php?halaman=hapusfotoproduk&idfoto=<?php echo $value["id_foto_produk"] ?>&idproduk=<?php echo $value["id_produk"] ?> " class="btn btn-danger btn-sm">Hapus</a>
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary">Detail Produk</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <input type="text" class="form-control" readonly="" value="<?php echo $detailproduk['nama_kategori']; ?>">
+                </div>
+                <div class="form-group">
+                    <label>Produk</label>
+                    <input type="text" class="form-control" readonly="" value="<?php echo $detailproduk['nama_produk']; ?>">
+                </div>
+                <div class="form-group">
+                    <label>Harga</label>
+                    <input type="number" class="form-control" readonly="" value="<?php echo $detailproduk['harga_produk']; ?>">
+                </div>
+                <div class="form-group">
+                    <label>Stok</label>
+                    <input type="number" class="form-control" readonly="" value="<?php echo $detailproduk['stok_produk']; ?>">
+                </div>
+                <div class="form-group">
+                    <label>Berat (gr)</label>
+                    <input type="number" class="form-control" readonly="" value="<?php echo $detailproduk['berat_produk']; ?>">
+                </div>
+                <div class="form-group">
+                    <label>Foto Produk</label><br>
+                    <div class="col-md-3">
+                        <img src="../foto_produk/<?php echo $detailproduk['foto_produk']; ?>" alt="" class="img-fluid"><br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi</label>
+                    <textarea class="form-control" name="deskripsi" readonly="" rows="10"><?php echo $detailproduk['deskripsi_produk']; ?>      
+                    </textarea>
+                </div>
+            </form><br>
+            <a href="index.php?halaman=produk" class="btn btn-primary btn-sm">Kembali</a>
+        </div>
     </div>
-    <?php endforeach ?>
 </div>
-
-<form method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label> File Foto </label>
-        <input type="file" name="produk_foto">
-    </div>
-    <button class="btn btn-primary" name="simpan" value="simpan" ><span class="glyphicon glyphicon-saved"></span> Simpan</button>
-</form>
-
-<?php 
-    if(isset($_POST["simpan"]))
-    {
-        $lokasifoto = $_FILES["produk_foto"]["tmp_name"];
-        $namafoto = $_FILES["produk_foto"]["name"];
-
-        $namafoto =  date("YmdHis").$namafoto;
-
-        //upload
-        move_uploaded_file($lokasifoto,"../foto_produk/".$namafoto);
-
-        $koneksi->query("INSERT INTO produk_foto(id_produk,nama_produk_foto) VALUES('$id_produk','$namafoto') ");
-
-        echo "<script>alert('Foto Produk berhasil tersimpan!');</script>";
-        echo "<script>location='index.php?halaman=detailproduk&id=$id_produk';</script>";
-    }
-?>
-
-
 
 
 

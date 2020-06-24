@@ -15,5 +15,5 @@
 	$koneksi ->query("DELETE FROM produk_foto WHERE id_foto_produk='$id_foto'");
 
 	echo "<script>alert('Foto Produk terhapus!');</script>";
-	echo "<script>location='index.php?halaman=detailproduk&id=$id_produk';</script>";
+	echo "<script>location='index.php?halaman=detail-produk&id=$id_produk';</script>";
 ?>

@@ -22,6 +22,16 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<style type="text/css">
+			.card-img-top{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				height: 300px;
+				width: 300px;
+			}
+		</style>
 	</head>
 	<body>
 		<?php include 'menu.php'; ?>
@@ -35,8 +45,8 @@
 							$query_kategori = $koneksi->query("SELECT * FROM kategori ORDER BY nama_kategori ASC");
 							while($kategori = $query_kategori->fetch_assoc()){
 						?>
-			        	<a href="#" class="list-group-item"><?php echo $kategori['nama_kategori']; ?></a>
-			        <?php } ?>
+			        		<a href="index.php?catid=<?php echo $kategori['id_kategori']; ?>" class="list-group-item"><?php echo $kategori['nama_kategori']; ?></a>
+			        	<?php } ?>
 			        </div>
 				</div>
 
@@ -89,7 +99,17 @@
         $jumlah = $_POST["jumlah"];
        	$_SESSION['keranjang'][$id_produk] = $jumlah;
 
-        echo "<script>alert('Produk ditambahkan ke keranjang belanja!')</script>";
+        // echo "<script>alert('Produk ditambahkan ke keranjang belanja!')</script>";
         echo "<script>location='keranjang.php'</script>";
     }
 ?>
+
+<?php
+	if(isset($_GET['catid'])){
+		$catid   = $_GET['catid'];
+		$query   = $koneksi->query("SELECT * FROM produk WHERE id_kategori = '$catid' ORDER BY nama_produk ASC");
+	}else{
+		$query   = $koneksi->query("SELECT * FROM produk ORDER BY nama_produk ASC");
+	}
+?>
+	

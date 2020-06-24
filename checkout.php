@@ -32,7 +32,7 @@
 			
 				<h3 class="my-4">Checkout</h3>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table class="table table-bordered table-striped">
 					  <thead>
 					    <tr>
 					      <th scope="col">No</th>
@@ -90,7 +90,7 @@
 								<select class="form-control" name="id_ongkir">
 									<option value="">Pilih ongkos kirim</option>
 									<?php
-										$query = $koneksi->query("SELECT * FROM ongkir");
+										$query = $koneksi->query("SELECT * FROM ongkir ORDER BY nama_kota ASC");
 										while($data  = $query->fetch_assoc()){
 									?>
 									<option value="<?php echo $data['id_ongkir']; ?>">

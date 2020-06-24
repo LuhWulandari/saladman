@@ -8,10 +8,20 @@
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Saladman | List Produk</title>
+		<title>Kebun Mimba | List Produk</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<style type="text/css">
+			.card-img-top{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				height: 140px;
+				width: 140px;
+			}
+		</style>
 	</head>
 	<body>
 		<?php include 'menu.php'; ?>
@@ -25,11 +35,10 @@
 							$query_kategori = $koneksi->query("SELECT * FROM kategori ORDER BY nama_kategori ASC");
 							while($kategori = $query_kategori->fetch_assoc()){
 						?>
-			        	<a href="#" class="list-group-item"><?php echo $kategori['nama_kategori']; ?></a>
+			        	<a href="index.php?catid=<?php echo $kategori['id_kategori']; ?>" class="list-group-item"><?php echo $kategori['nama_kategori']; ?></a>
 			        <?php } ?>
 			        </div>
 				</div>
-
 				<div class="col-lg-9">
 					<!-- Carousel Slide -->
 					<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -62,8 +71,15 @@
 					<!-- List Product -->
 					<div class="row">
 						<?php
-							$query = $koneksi->query("SELECT * FROM produk");
-							while($data = $query->fetch_assoc()){
+							if(isset($_GET['catid'])){
+								$catid   = $_GET['catid'];
+								//Jika stok kurang dari 1 maka tidak akan tampil di index konsumen
+								$query   = $koneksi->query("SELECT * FROM produk WHERE id_kategori = '$catid' AND  stok_produk > 1 ORDER BY nama_produk ASC");
+							}else{
+								//Jika stok kurang dari 1 maka tidak akan tampil di index konsumen
+								$query   = $koneksi->query("SELECT * FROM produk WHERE stok_produk > 0 ORDER BY nama_produk ASC");
+							}
+							while($data  = $query->fetch_assoc()){
 						?>
 						<div class="col-lg-4 col-md-6 mb-4">
 				            <div class="card h-100">

@@ -54,12 +54,12 @@
 					<label>Bank</label>
 					<select class="form-control" name="bank">
 						<option value="">Pilih Bank</option>
-						<option value="Danamon">Danamon</option>
-						<option value="Mandiri">Mandiri</option>
-						<option value="Mega">Mega</option>
 						<option value="BCA">BCA (Bank Central Asia)</option>
 						<option value="BNI">BNI (Bank Negara Indonesia)</option>
 						<option value="BRI">BRI (Bank Rakyat Indonesia)</option>
+						<option value="Danamon">Danamon</option>
+						<option value="Mandiri">Mandiri</option>
+						<option value="Mega">Mega</option>
 					</select>
 				</div>
 				<div class="form-group">

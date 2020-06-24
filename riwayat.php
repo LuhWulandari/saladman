@@ -24,7 +24,7 @@
 			
 				<h3 class="my-4">Riwayat Transaksi <?php echo $_SESSION['pelanggan']['nama_pelanggan']; ?></h3>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table class="table table-bordered table-striped">
 					  <thead>
 					    <tr>
 					      <th scope="col">No</th>

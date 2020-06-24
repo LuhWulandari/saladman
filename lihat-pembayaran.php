@@ -42,7 +42,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="table-responsive">
-						<table class="table table-striped">
+						<table class="table table-striped table-bordered">
 							<tr>
 								<th scope="col">Nama</th>
 								<td scope="col">:</td>
